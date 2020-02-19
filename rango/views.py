@@ -13,4 +13,12 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-    return HttpResponse("Rango says here is the about page. <a href='/rango/'>Index</a>")
+
+    # do we need a context_dict ? Don't think so as one is not referenced in about.html
+    # context_dict = {''}
+    return render(request, 'rango/about.html')
+
+
+# removed in exercise 4.4
+#def about(request):
+#    return HttpResponse("Rango says here is the about page. <a href='/rango/'>Index</a>")
