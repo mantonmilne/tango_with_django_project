@@ -23,6 +23,10 @@ print(TEMPLATE_DIR)
 print(STATIC_DIR)
 print(MEDIA_DIR)
 
+# cookie related add-ins. 604800 = 1 week in seconds.
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 604800
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
