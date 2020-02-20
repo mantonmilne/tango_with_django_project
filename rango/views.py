@@ -35,10 +35,10 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
+    print(request.method)
+    print(request.user)
 
-    # do we need a context_dict ? Don't think so as one is not referenced in about.html
-    # context_dict = {''}
-    return render(request, 'rango/about.html')
+    return render(request, 'rango/about.html', {})
 
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
@@ -84,9 +84,7 @@ def add_category(request):
             # Save the new category to the database
             cat = form.save(commit=True)
             print(cat, cat.slug)
-            # Now that the category is saved, we could confirm this.
-            # For now, just redirect the user back to the index view.
-            return redirect('/rango/')
+            return redirect(reverse('rango:index'))
         else:
             # The supplied form contained errors -
             # just print them to terminal.
@@ -102,7 +100,7 @@ def add_page(request, category_name_slug):
 
     # You cannot add a page to a Category that does not exist...
     if category is None:
-        return redirect('/rango/')
+        return redirect(reverse('rango:index'))
 
     form = PageForm()
 
